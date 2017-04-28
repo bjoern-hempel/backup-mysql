@@ -21,29 +21,41 @@ TIMESTAMP=$(date +%Y/%m/%d/%H-%M-%S)
 # header
 log "header" "Start backup mysql tables.."
 
-log "info" "Create folder $OUTPUT/$TIMESTAMP"
-mkdir -p $OUTPUT/$TIMESTAMP
+# check backup path
+log "info" "Check backup path"
+if [ ! -d "$MYSQL_BACKUP_PATH" ]; then
+    log "info" "Create backup path."
+    mkdir -p "$MYSQL_BACKUP_PATH"
+    chmod -R 775 /var/backups/mysql
+    chown -R root:root /var/backups/mysql
+else
+    log "info" "Backup path exists."
+fi
 
-log "info" "Switch into folder $OUTPUT"
-cd $OUTPUT
+# create subfolder
+log "info" "Create folder $MYSQL_BACKUP_PATH/$TIMESTAMP"
+mkdir -p $MYSQL_BACKUP_PATH/$TIMESTAMP
 
-databases=$(mysql --user=$USER --password=$PASSWORD -e "SHOW DATABASES;" | tr -d "| " | grep -v Database)
+log "info" "Switch into folder \"$MYSQL_BACKUP_PATH\""
+cd "$MYSQL_BACKUP_PATH"
 
-log "info" "Lock backup folder. Write $OUTPUT/$TIMESTAMP/$LOCK_FILE."
-touch $OUTPUT/$TIMESTAMP/$LOCK_FILE
+databases=$(mysql --user=$MYSQL_USER --password=$MYSQL_PASSWORD -e "SHOW DATABASES;" | tr -d "| " | grep -v Database)
+
+log "info" "Lock backup folder. Write $MYSQL_BACKUP_PATH/$TIMESTAMP/$LOCK_FILE."
+touch $MYSQL_BACKUP_PATH/$TIMESTAMP/$LOCK_FILE
 
 for db in $databases; do
   if [[ "$db" != "information_schema" ]] && [[ "$db" != "performance_schema" ]] && [[ "$db" != "mysql" ]] && [[ "$db" != _* ]]; then
-    log "info" "Dump database $db TO $OUTPUT/$TIMESTAMP/$db.sql"
-    mysqldump --force --opt --user=$USER --password=$PASSWORD --databases $db > $TIMESTAMP/$db.sql
+    log "info" "Dump database $db TO $MYSQL_BACKUP_PATH/$TIMESTAMP/$db.sql"
+    mysqldump --force --opt --user=$MYSQL_USER --password=$MYSQL_PASSWORD --databases $db > $TIMESTAMP/$db.sql
 
-    log "info" "Zip sql file to $OUTPUT/$TIMESTAMP/$db.sql.gz"
+    log "info" "Zip sql file to $MYSQL_BACKUP_PATH/$TIMESTAMP/$db.sql.gz"
     gzip $TIMESTAMP/$db.sql
   fi
 done
 
 log "info" "Delete lock file"
-rm $OUTPUT/$TIMESTAMP/$LOCK_FILE
+rm $MYSQL_BACKUP_PATH/$TIMESTAMP/$LOCK_FILE
 
 log "info" "Finish backup mysql script"
 
