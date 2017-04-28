@@ -35,7 +35,7 @@ MYSQL_BACKUP_PATH="/var/backups/mysql"
 LOCK_FILE="build.lock"
 ```
 
-### A.3) backup the database
+### A.3) backup the database (the manual way)
 
 ```
 user$ sudo backup-mysql                                                                                                                                                        
@@ -51,7 +51,7 @@ user$ sudo backup-mysql
 [2017-04-28 15:45:15] [INFO‧‧‧] Finish backup mysql script
 ```
 
-### A.4) install cronjob
+### A.4) backup the database (the cronjob way)
 
 ```
 user$ sudo touch /var/log/backup-mysql.log
