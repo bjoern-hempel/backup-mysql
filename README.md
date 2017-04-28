@@ -10,6 +10,7 @@ user$ sudo mkdir backup-mysql
 user$ sudo chmod 775 backup-mysql
 user$ sudo chown root:users backup-mysql
 user$ git clone git@github.com:bjoern-hempel/backup-mysql.git
+user$ sudo ./install
 ```
 
 ### A.2) config file
