@@ -6,6 +6,8 @@ A script to easily backup all your databases.
 
 ### A.1) installation
 
+The backup-mysql project uses the friends of bash libraries. Please install them before: https://github.com/bjoern-hempel/friends-of-bash
+
 ```
 user$ cd /opt/
 user$ sudo mkdir backup-mysql
