@@ -1,5 +1,7 @@
 # backup-mysql
 
+A script to easily backup all your databases.
+
 ## A.) First usage
 
 ### A.1) installation
@@ -30,3 +32,23 @@ MYSQL_PASSWORD="**********"
 MYSQL_BACKUP_PATH="/var/backups/mysql"
 LOCK_FILE="build.lock"
 ```
+
+### A.3) backup the database
+
+```
+user$ sudo backup-mysql                                                                                                                                                        
+[2017-04-28 15:45:14] [HEADER‧] START BACKUP MYSQL TABLES..
+[2017-04-28 15:45:14] [INFO‧‧‧] Create folder /var/backups/mysql/2017/04/28/15-45-14
+[2017-04-28 15:45:14] [INFO‧‧‧] Switch into folder /var/backups/mysql
+[2017-04-28 15:45:14] [INFO‧‧‧] Lock backup folder. Write /var/backups/mysql/2017/04/28/15-45-14/build.lock.
+[2017-04-28 15:45:14] [INFO‧‧‧] Dump database de.rsm-live.maco.team-mline.stage TO /var/backups/mysql/2017/04/28/15-45-14/de.rsm-live.maco.team-mline.stage.sql
+[2017-04-28 15:45:14] [INFO‧‧‧] Zip sql file to /var/backups/mysql/2017/04/28/15-45-14/de.rsm-live.maco.team-mline.stage.sql.gz
+[2017-04-28 15:45:14] [INFO‧‧‧] Dump database de.rsm-live.maco.team-mline.www TO /var/backups/mysql/2017/04/28/15-45-14/de.rsm-live.maco.team-mline.www.sql
+[2017-04-28 15:45:14] [INFO‧‧‧] Zip sql file to /var/backups/mysql/2017/04/28/15-45-14/de.rsm-live.maco.team-mline.www.sql.gz
+[2017-04-28 15:45:15] [INFO‧‧‧] Delete lock file
+[2017-04-28 15:45:15] [INFO‧‧‧] Finish backup mysql script
+```
+
+### A.4) install cronjob
+
+TODO ...
