@@ -26,7 +26,7 @@ user$ sudo chmod -R 500 /etc/backup-mysql/config
 user$ sudo vi /etc/backup-mysql/config
 ```
 
-Content of /etc/backup-mysql/config
+Content of /etc/backup-mysql/config:
 
 ```
 MYSQL_USER="root"
@@ -60,7 +60,7 @@ user$ sudo chown root:root /var/log/backup-mysql.log
 user$ sudo vi /etc/crontab
 ```
 
-Content of /etc/crontab
+Content of /etc/crontab:
 
 ```
 # MySQL backup every day one o'clock
