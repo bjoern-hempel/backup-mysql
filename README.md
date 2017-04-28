@@ -13,7 +13,7 @@ user$ git clone git@github.com:bjoern-hempel/backup-mysql.git
 user$ sudo ./install
 ```
 
-### A.2) config file
+### A.2) add the mysql config file
 
 ```
 user$ sudo mkdir /etc/backup-mysql
