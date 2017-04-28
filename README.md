@@ -53,4 +53,16 @@ user$ sudo backup-mysql
 
 ### A.4) install cronjob
 
-TODO ...
+```
+user$ sudo touch /var/log/backup-mysql.log
+user$ sudo chmod 664 /var/log/backup-mysql.log
+user$ sudo chown root:root /var/log/backup-mysql.log
+user$ sudo vi /etc/crontab
+```
+
+Content of /etc/crontab
+
+```
+# MySQL backup every day one o'clock
+00 01 * * * root backup-mysql >> /var/log/backup-mysql.log 2>&1
+```
