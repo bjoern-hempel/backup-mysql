@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # include friends of bash
-source "/opt/friends-of-bash/lib/all"
+source "/opt/friends-of-bash/friends-of-bash/lib/all"
 
 # include some libraries
 source "/etc/backup-mysql/config"

@@ -30,7 +30,7 @@
 pathRoot="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # include friends of bash
-source "/opt/friends-of-bash/lib/all"
+source "/opt/friends-of-bash/friends-of-bash/lib/all"
 
 # some constants
 ROOT_UID="0"
