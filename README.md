@@ -8,7 +8,7 @@ A script to easily backup all your databases.
 
 First install the friends of bash libraries: https://github.com/bjoern-hempel/friends-of-bash
 
-Check that the libraries are available:
+Check that the friends of bash libraries are available:
 
 ```
 user$ friends-of-bash status
