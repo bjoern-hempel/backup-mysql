@@ -1,10 +1,48 @@
 #!/bin/bash
 
+# some configs
+       FRIENDS_OF_BASH_ROOT="/opt/friends-of-bash/friends-of-bash"
+FRIENDS_OF_BASH_SOURCE_FILE="$FRIENDS_OF_BASH_ROOT/lib/all"
+         BACKUP_CONFIG_PATH="/etc/backup-mysql/config"
+
 # include friends of bash
-source "/opt/friends-of-bash/friends-of-bash/lib/all"
+source "$FRIENDS_OF_BASH_SOURCE_FILE"
+
+# check config files
+configFolder=$(dirname "$BACKUP_CONFIG_PATH")
+if [ ! -d "$configFolder" ]; then
+    echo
+    echo "Config folder \"$configFolder\" was not found. Please do:"
+    echo
+    echo "··········"
+    echo "user\$ sudo mkdir \"$configFolder\""
+    echo "··········"
+    echo
+    exit
+fi
+if [ ! -f "$BACKUP_CONFIG_PATH" ]; then
+    echo
+    echo "Config file \"\" was not found. Please do:"
+    echo
+    echo "··········"
+    echo "user\$ sudo touch /etc/backup-mysql/config"
+    echo "user\$ sudo chmod -R 500 \"$BACKUP_CONFIG_PATH\""
+    echo "··········"
+    echo
+    echo "Add with an editor of your choice the following content to \"$BACKUP_CONFIG_PATH\":"
+    echo
+    echo "~~~~~~~~~~"
+    echo "MYSQL_USER=\"root\""
+    echo "MYSQL_PASSWORD=\"**********\""
+    echo "MYSQL_BACKUP_PATH=\"/var/backups/mysql\""
+    echo "LOCK_FILE=\"build.lock\""
+    echo "~~~~~~~~~~"
+    echo
+    exit
+fi
 
 # include some libraries
-source "/etc/backup-mysql/config"
+source "$BACKUP_CONFIG_PATH"
 
 # some constants
 ROOT_UID="0"
