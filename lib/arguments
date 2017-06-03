@@ -5,7 +5,7 @@ PARAMETERS=()
 
 # read arguments
 # help:
-# help: Usage: %scriptname% [options...] {install|update|status}
+# help: Usage: %scriptname% [options...]
 while [[ $# > 0 ]]; do
     case "$1" in
         # help:  -h,    --help                    Shows this help.
