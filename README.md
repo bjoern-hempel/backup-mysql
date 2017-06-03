@@ -6,15 +6,12 @@ A script to easily backup all your databases.
 
 ### A.1) installation
 
-The backup-mysql project uses the friends of bash libraries. Please install them before: https://github.com/bjoern-hempel/friends-of-bash
+First install the friends of bash libraries: https://github.com/bjoern-hempel/friends-of-bash
+
+Now install:
 
 ```
-user$ cd /opt/
-user$ sudo mkdir backup-mysql
-user$ sudo chmod 775 backup-mysql
-user$ sudo chown root:users backup-mysql
-user$ git clone git@github.com:bjoern-hempel/backup-mysql.git
-user$ sudo ./install
+user$ sudo friends-of-bash install "git@github.com:bjoern-hempel/backup-mysql.git"
 ```
 
 ### A.2) add the mysql config file
