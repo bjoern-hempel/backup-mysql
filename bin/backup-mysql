@@ -5,8 +5,21 @@
 FRIENDS_OF_BASH_SOURCE_FILE="$FRIENDS_OF_BASH_ROOT/lib/all"
          BACKUP_CONFIG_PATH="/etc/backup-mysql/config"
 
+# some calculable configs before
+if [ -h "${BASH_SOURCE[0]}" ]; then
+    realScriptname=$(readlink "${BASH_SOURCE[0]}")
+    pathRoot=$(dirname "$realScriptname")
+    scriptname="${BASH_SOURCE[0]}"
+else
+    scriptname="$0"
+    pathRoot="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+fi
+
 # include friends of bash
 source "$FRIENDS_OF_BASH_SOURCE_FILE"
+
+# include arguments
+source "$pathRoot/../lib/arguments"
 
 # check config files
 configFolder=$(dirname "$BACKUP_CONFIG_PATH")
