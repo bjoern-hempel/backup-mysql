@@ -6,7 +6,14 @@ A script to easily backup all your databases.
 
 ### A.1) installation
 
-First install the friends of bash libraries: https://github.com/bjoern-hempel/friends-of-bash
+First install the friends of bash libraries (https://github.com/bjoern-hempel/friends-of-bash). In short:
+
+```
+user$ cd ~
+user$ git clone git@github.com:bjoern-hempel/friends-of-bash.git && cd friends-of-bash
+user$ sudo -E bin/install
+user$ cd .. && rm -rf friends-of-bash
+```
 
 Check that the friends of bash libraries are available:
 
