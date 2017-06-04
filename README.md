@@ -1,4 +1,4 @@
-# backup-mysql
+# backup mysql
 
 A script to easily backup all your databases.
 
