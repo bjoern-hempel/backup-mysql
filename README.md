@@ -11,23 +11,14 @@ First install the friends of bash libraries: https://github.com/bjoern-hempel/fr
 Check that the friends of bash libraries are available:
 
 ```
-user$ friends-of-bash status
-
-friends-of-bash
-
-Currently installed version:   v0.0.11
-Available version:             v0.0.11
-
-Currently installed changeset: c67510fda8e8d8d71b15e3329ab396bd8e79129e
-Available changeset:           c67510fda8e8d8d71b15e3329ab396bd8e79129e
-
-Your "/opt/friends-of-bash/friends-of-bash" version is up to date. Nothing to do here.
+user$ friends-of-bash --version
+friends-of-bash/v0.0.11
 ```
 
 Now install this application:
 
 ```
-user$ sudo friends-of-bash install "git@github.com:bjoern-hempel/backup-mysql.git"
+user$ sudo -E friends-of-bash install "git@github.com:bjoern-hempel/backup-mysql.git"
 ```
 
 ### A.2) add the mysql config file
