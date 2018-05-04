@@ -33,7 +33,6 @@ user$ cd .. && rm -rf friends-of-bash
 user$ sudo mkdir /etc/backup-mysql
 user$ sudo touch /etc/backup-mysql/config
 user$ sudo vi /etc/backup-mysql/config
-user$ sudo chmod -R 500 /etc/backup-mysql/config
 ```
 
 Content of /etc/backup-mysql/config:
@@ -43,6 +42,12 @@ MYSQL_USER="root"
 MYSQL_PASSWORD="**********"
 MYSQL_BACKUP_PATH="/var/backups/mysql"
 LOCK_FILE="build.lock"
+```
+
+Make the file only readable by root user:
+
+```
+user$ sudo chmod -R 500 /etc/backup-mysql/config
 ```
 
 ### A.3) backup the database (the manual way)
