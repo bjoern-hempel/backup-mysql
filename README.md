@@ -32,8 +32,8 @@ user$ cd .. && rm -rf friends-of-bash
 ```
 user$ sudo mkdir /etc/backup-mysql
 user$ sudo touch /etc/backup-mysql/config
-user$ sudo chmod -R 500 /etc/backup-mysql/config
 user$ sudo vi /etc/backup-mysql/config
+user$ sudo chmod -R 500 /etc/backup-mysql/config
 ```
 
 Content of /etc/backup-mysql/config:
