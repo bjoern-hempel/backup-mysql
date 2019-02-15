@@ -38,6 +38,7 @@ user$ sudo vi /etc/backup-mysql/config
 Content of /etc/backup-mysql/config:
 
 ```
+MYSQL_HOST="localhost"
 MYSQL_USER="root"
 MYSQL_PASSWORD="**********"
 MYSQL_BACKUP_PATH="/var/backups/mysql"
