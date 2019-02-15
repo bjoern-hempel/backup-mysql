@@ -45,6 +45,7 @@ if [ ! -f "$BACKUP_CONFIG_PATH" ]; then
     echo "Add with an editor of your choice the following content to \"$BACKUP_CONFIG_PATH\":"
     echo
     echo "~~~~~~~~~~"
+    echo "MYSQL_HOST=\"localhost\""
     echo "MYSQL_USER=\"root\""
     echo "MYSQL_PASSWORD=\"**********\""
     echo "MYSQL_BACKUP_PATH=\"/var/backups/mysql\""
@@ -90,7 +91,7 @@ mkdir -p $MYSQL_BACKUP_PATH/$TIMESTAMP
 log "info" "Switch into folder \"$MYSQL_BACKUP_PATH\""
 cd "$MYSQL_BACKUP_PATH"
 
-databases=$(mysql --user=$MYSQL_USER --password=$MYSQL_PASSWORD -e "SHOW DATABASES;" | tr -d "| " | grep -v Database)
+databases=$(mysql --host=$MYSQL_HOST --user=$MYSQL_USER --password=$MYSQL_PASSWORD -e "SHOW DATABASES;" | tr -d "| " | grep -v Database)
 
 log "info" "Lock backup folder. Write $MYSQL_BACKUP_PATH/$TIMESTAMP/$LOCK_FILE."
 touch $MYSQL_BACKUP_PATH/$TIMESTAMP/$LOCK_FILE
@@ -98,7 +99,7 @@ touch $MYSQL_BACKUP_PATH/$TIMESTAMP/$LOCK_FILE
 for db in $databases; do
   if [[ "$db" != "information_schema" ]] && [[ "$db" != "performance_schema" ]] && [[ "$db" != "mysql" ]] && [[ "$db" != _* ]]; then
     log "info" "Dump database $db TO $MYSQL_BACKUP_PATH/$TIMESTAMP/$db.sql"
-    mysqldump --force --opt --user=$MYSQL_USER --password=$MYSQL_PASSWORD --databases $db > $TIMESTAMP/$db.sql
+    mysqldump --force --opt --host=$MYSQL_HOST --user=$MYSQL_USER --password=$MYSQL_PASSWORD --databases $db > $TIMESTAMP/$db.sql
 
     log "info" "Zip sql file to $MYSQL_BACKUP_PATH/$TIMESTAMP/$db.sql.gz"
     gzip $TIMESTAMP/$db.sql
